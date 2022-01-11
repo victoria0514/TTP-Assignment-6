@@ -20,6 +20,7 @@ function App() {
       console.log("error", error);
     }
   };
+  
  
   const displayResults = async () => {
     const zip = document.querySelector("#zip-input").value;
