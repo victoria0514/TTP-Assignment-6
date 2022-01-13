@@ -3,10 +3,10 @@ import React from "react";
 function City(props) {
   return (
     <div>
-      <div className="result-header">
+      <div className="header">
         <h2>{props.cityName}</h2>
       </div>
-      <div className="result-box">
+      <div className="box">
         <ul>
           <li>City, State: {props.city}</li>
           <li>Est. Population: {props.population}</li>

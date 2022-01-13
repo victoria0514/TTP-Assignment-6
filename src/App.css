@@ -30,11 +30,11 @@ body {
   background-color: lightgray;
 }
 
-.result-header {
+.header {
   text-align: left;
 }
 
-.result-box {
+.box {
   border: 2px black;
   background-color: white;
 }

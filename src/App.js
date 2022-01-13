@@ -1,31 +1,38 @@
 import React from "react";
 import reactDOM from "react-dom";
-import "./App.css";
 import City from "./components/City";
+import "./App.css";
 
 function App() {
   const getResults = async (zip) => {
     try {
+      // fetching the request
+      // let response = await fetch('resource[, options]');
       let response = await fetch(`http://ctp-zip-api.herokuapp.com/zip/${zip}`);
+      // waits until the request completes  
       console.log("response", response);
 
+      // throwing an error
       if (!response.ok) {
         throw new Error("Invalid zipcode");
       }
-
+      // Fetching data using promise
       let data = await response.json();
+      // gets the data
       console.log("data", data);
       return data;} 
       catch (error) {
+        // if something goes wrong, will catch here
       console.log("error", error);
     }
   };
   
- 
+  // inputting zipcode and getting data
   const displayResults = async () => {
     const zip = document.querySelector("#zip-input").value;
     const data = await getResults(zip);
     
+    // if the zipcode is not located in the data
     if (!data) {
       alert("Invalid zipcode");
       return;
@@ -35,6 +42,7 @@ function App() {
 
     let results = [];
 
+    // pushing the results
     for (const dataSet of data) {
       results.push(
         <City
@@ -45,7 +53,7 @@ function App() {
           </City>
       );
     }
-
+    // using render to pass everything in
     reactDOM.render(results, resultDiv);
   };
 
@@ -65,5 +73,9 @@ function App() {
     </div>
   );
 }
+
+// Couple Lines from render function and getData to new data - adapted from here:
+// URL: https://stackoverflow.com/questions/39866876/how-to-setstate-to-new-data-in-react
+
 
 export default App;
